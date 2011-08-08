@@ -20,6 +20,8 @@ class System(object):
   def __init__(self, width, height, n=50, max_mass=100):
     self.n = n
     self.particles = []
+    self.width = width
+    self.height = height
     for x in xrange(0, n):
       mass = random.random() * max_mass
       x = float(random.randint(0, width))
@@ -44,4 +46,6 @@ class System(object):
 
     for particle in self.particles:
       particle.update(dt, debug=True)
-       
+      if particle.pos.x < 0.0 or particle.pos.x > self.width or \
+         particle.pos.y < 0.0 or particle.pos.y > self.height:
+           del particle
