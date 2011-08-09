@@ -5,8 +5,8 @@ from pygame.locals import *
 import body
 from vector import Vector
 
-white = [0, 0, 0]
-black = [255, 255, 255]
+black = [0, 0, 0]
+white = [255, 255, 255]
 
 def setup():
   pygame.init()
@@ -14,13 +14,6 @@ def setup():
   clock = pygame.time.Clock()
   pygame.display.set_caption("Verlet Integration")
   return (screen, clock)
-
-def transform(world, width, height):
-  """
-    Maps world cordinates to screen.
-  """
-  return Vector(world.x + (width/2.0),
-                world.y + (height/2.0))
 
 def render_system(screen, s):
   for particle in s.particles:
@@ -41,12 +34,7 @@ def main():
         print event.pos
     
     s.update(timestep)
-    #b.force *= dampening
-    #b.update(timestep)
-    #paint = transform(b.pos, 640, 480)
-    #print paint
     render_system(scr, s)
-    #pygame.draw.circle(scr, black, (paint.x, paint.y), 5)
     pygame.display.flip()
     timer.tick(20)
 
