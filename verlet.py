@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 from vector import Vector
 
-def verlet(cur_pos, old_pos, acc, dt):
+def verlet(cur_pos, old_pos, acc, dt, verbose=False):
   retval = (cur_pos * 2) - old_pos +  (acc * (dt**2.0))
-  print "cur_pos = %s, old_pos = %s, new_pos = %s, acc = %s" % (cur_pos, old_pos, retval, acc)
+  if verbose:
+    print "cur_pos = %s, old_pos = %s, new_pos = %s, acc = %s" \
+          % (cur_pos, old_pos, retval, acc)
   return retval
 
 def main():
